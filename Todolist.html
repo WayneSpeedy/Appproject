@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shared To-Do List</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 1;
+                background-color: black;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh; /* Ensures body takes up at least the full height of the screen */
+            }
+            header {
+                background-color: #333;
+                padding: 10px;
+                border: 1px solid #000000;
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 0px 50px rgba(0, 0, 255, 0.722);
+            }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        header nav ul li {
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        #todo-container {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 8px;
+            box-shadow: 0 15px 50px rgba(17, 0, 255, 0.5);
+        }
+        #todo-container h3 {
+            margin-top: 0;
+        }
+        #todo-container input[type="text"] {
+            width: calc(100% - 90px);
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #222;
+            color: white;
+        }
+        #todo-container button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #todo-container button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+        }
+        ul li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        ul li button {
+            margin-left: 10px;
+            background-color: #dc3545;
+            color: white;
+        }
+        ul li button:hover {
+            background-color: #a71d2a;
+        }
+        footer {
+            text-align: center;
+            margin-top: auto; /* Ensures footer stays at the bottom */
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shared To-Do List</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Todolist.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 style="text-align: center;">Welcome to Wayne's Shared To-Do List</h2>
+            <p style="text-align: center;">Feel free to add and change these tasks.<br> Make sure to log in to save your changes.</p>
+        </section>
+        <section id="todo-container">
+            <h3>To-Do List</h3>
+            <input type="text" id="new-task" placeholder="Add a new task...">
+            <button id="add-task">Add</button>
+            <ul id="task-list">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Speedy Enterprises. All rights reserved. </p>
+    </footer>
+    <script>
+        // Get the DOM elements for input, button, and the task list
+        const addTaskButton = document.getElementById('add-task');
+        const newTaskInput = document.getElementById('new-task');
+        const taskList = document.getElementById('task-list');
+    
+        // Add event listener to the "Add" button
+        addTaskButton.addEventListener('click', function() {
+            // Get the task from the input field
+            const taskText = newTaskInput.value.trim();
+    
+            // Check if the input is not empty
+            if (taskText !== '') {
+                // Create a new list item
+                const newTaskItem = document.createElement('li');
+                newTaskItem.textContent = taskText;
+    
+                // Create the "Complete" button
+                const completeButton = document.createElement('button');
+                completeButton.textContent = 'Complete';
+                completeButton.addEventListener('click', function() {
+                    // Toggle the completed state (mark as completed or not)
+                    newTaskItem.classList.toggle('completed');
+                });
+    
+                // Create the "Delete" button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', function() {
+                    newTaskItem.remove();  // Remove the task item when clicked
+                });
+    
+                // Append the buttons to the task item
+                newTaskItem.appendChild(completeButton);
+                newTaskItem.appendChild(deleteButton);
+    
+                // Append the new task item to the task list
+                taskList.appendChild(newTaskItem);
+    
+                // Clear the input field after adding the task
+                newTaskInput.value = '';
+            } else {
+                alert('Please enter a task before adding!');
+            }
+        });
+    
+        // Optional: Allow pressing "Enter" to add the task
+        newTaskInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTaskButton.click();
+            }
+        });
+    </script>    
+</body>
+</html>
