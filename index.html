@@ -7,12 +7,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 1;
+            margin: 0;
             background-color: black;
             color: white;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensures body takes up at least the full height of the screen */
+            min-height: 100vh;
         }
         header {
             background-color: #333;
@@ -42,38 +42,37 @@
         }
         main {
             padding: 20px;
-            flex-grow: 1; /* Ensures main content takes up remaining space */
+            flex-grow: 1;
         }
-
-        ul {
-            list-style: none;
-            padding: 0;
+        h3, h5 {
+            text-align: center;
         }
-        ul li {
-            padding: 10px;
-            border: 3px solid #555;
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #333;
             border-radius: 10px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #222;
+            box-shadow: 0 10px 30px rgba(0, 0, 255, 0.5);
+            text-align: center;
         }
-        ul li.completed {
-            text-decoration: line-through;
-            color: #888;
-        }
-        ul li button {
-            margin-left: 10px;
-            background-color: #dc3545;
+        .cta-button {
+            background-color: #007bff;
             color: white;
+            padding: 15px 25px;
+            border: none;
+            align-items: center;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
         }
-        ul li button:hover {
-            background-color: #a71d2a;
+        .cta-button:hover {
+            background-color: #0056b3;
         }
         footer {
             text-align: center;
-            margin-top: auto; /* Ensures footer stays at the bottom */
+            margin-top: auto;
             padding: 10px;
             background-color: #000000;
             color: white;
@@ -91,8 +90,31 @@
         </nav>
     </header>
     <main>
-        <h3 style="text-align: center;">Organize and collaborate effortlessly <br> with friends, family, or teammates.</h3>
-        <h5 style="text-align: center;">Please use the login button to use your To-Do List</h5>
+        <h3>Organize and collaborate effortlessly <br> with friends, family, or teammates.</h3>
+        <h5>Please use the login button to access your personalized To-Do List</h5>
+
+        <!-- Features Section -->
+        <section>
+            <h4>Key Features</h4>
+            <ul>
+                <li>Share tasks with others easily</li>
+                <li>Track completed and pending tasks</li>
+                <li>Stay organized with clear, simple lists</li>
+                <li>Access your list from any device</li>
+            </ul>
+        </section>
+
+        <!-- How It Works Section -->
+        <section>
+            <h4>How It Works</h4>
+            <p>After logging in, you can create, manage, and share tasks with your friends, family, or teammates. Stay productive and collaborate in real-time!</p>
+            <p>Get started by clicking the "Login" button above to access your personal To-Do List.</p>
+        </section>
+
+        <!-- Call to Action (Login Button) -->
+        <section>
+            <a href="Login.html" class="cta-button">Login to Get Started</a>
+        </section>
     </main>
     <footer>
         <h5>&copy; 2024 Speedy Enterprises. All rights reserved.</h5>
