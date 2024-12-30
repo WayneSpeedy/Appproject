@@ -186,6 +186,63 @@
                 addTaskButton.click();
             }
         });
+        // Load tasks from localStorage when the page loads
+window.onload = function() {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    savedTasks.forEach(task => {
+        addTaskToList(task.text, task.completed);
+    });
+};
+
+// Add task to the list and to localStorage
+function addTaskToList(taskText, isCompleted = false) {
+    const newTaskItem = document.createElement('li');
+    newTaskItem.textContent = taskText;
+
+    // Add the "Completed" button functionality
+    const completeButton = document.createElement('button');
+    completeButton.textContent = 'Complete';
+    completeButton.addEventListener('click', function() {
+        newTaskItem.classList.toggle('completed');
+        saveTasks(); // Save the updated tasks to localStorage
+    });
+
+    // Add the "Delete" button functionality
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+        newTaskItem.remove();
+        saveTasks(); // Save the updated tasks to localStorage
+    });
+
+    // Append the buttons to the task item
+    newTaskItem.appendChild(completeButton);
+    newTaskItem.appendChild(deleteButton);
+
+    // If the task is completed, mark it
+    if (isCompleted) {
+        newTaskItem.classList.add('completed');
+    }
+
+    // Append the new task item to the task list
+    taskList.appendChild(newTaskItem);
+
+    // Save the task to localStorage
+    saveTasks();
+}
+
+// Save the tasks to localStorage
+function saveTasks() {
+    const taskItems = document.querySelectorAll('#task-list li');
+    const tasks = [];
+    taskItems.forEach(taskItem => {
+        tasks.push({
+            text: taskItem.firstChild.textContent, // Task text
+            completed: taskItem.classList.contains('completed') // Check if the task is completed
+        });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
     </script>    
 </body>
 </html>
