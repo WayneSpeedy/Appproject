@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures body takes up at least the full height of the screen */
+        }
+        header {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0px 50px rgba(0, 0, 255, 0.722);
+        }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        header nav ul li {
+            margin: 0 15px;
+        }
+        header nav ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            flex-grow: 1; /* Ensures main content takes up remaining space */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 10px;
+            border: 3px solid #555;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+        }
+        ul li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        ul li button {
+            margin-left: 10px;
+            background-color: #dc3545;
+            color: white;
+        }
+        ul li button:hover {
+            background-color: #a71d2a;
+        }
+        footer {
+            text-align: center;
+            margin-top: auto; /* Ensures footer stays at the bottom */
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shared To-Do List</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h3 style="text-align: center;">Organize and collaborate effortlessly <br> with friends, family, or teammates.</h3>
+        <h5 style="text-align: center;">Please use the login button to use your To-Do List</h5>
+    </main>
+    <footer>
+        <h5>&copy; 2024 Speedy Enterprises. All rights reserved.</h5>
+    </footer>
+</body>
+</html>
